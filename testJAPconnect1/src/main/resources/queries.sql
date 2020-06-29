@@ -7,3 +7,4 @@ CREATE TABLE public."game" (
 	CONSTRAINT game_pk PRIMARY KEY (id)
 ); 
  INSERT INTO game(name,cost,category) values('GodOFWars',80,'Rol');
+ INSERT INTO game(name,cost,category) values('FIFA20',78,'Sports');
