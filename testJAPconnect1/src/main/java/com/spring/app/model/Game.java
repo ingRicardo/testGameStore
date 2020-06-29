@@ -28,7 +28,14 @@ public class Game {
     @Column(name = "category")
 	private String category;
     
+    public Game(){};
     
+	public Game(String name, int cost, String category) {
+		super();
+		this.name = name;
+		this.cost = cost;
+		this.category = category;
+	}
 	public int getId() {
 		return id;
 	}

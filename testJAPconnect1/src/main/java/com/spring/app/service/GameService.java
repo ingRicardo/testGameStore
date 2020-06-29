@@ -34,9 +34,9 @@ public class GameService implements GameRepository{
 	}
 
 	@Override
-	public <S extends Game> S save(S entity) {
+	public Game save(Game entity) {
 		// TODO Auto-generated method stub
-		return null;
+		return gameRepository.save(entity);
 	}
 
 	@Override

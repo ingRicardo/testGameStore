@@ -11,3 +11,5 @@ public class TestJaPconnect1Application {
 	}
 
 }
+
+//https://mkyong.com/spring-boot/spring-boot-ajax-example/
