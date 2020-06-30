@@ -24,43 +24,56 @@ public class Game {
     @Column(name = "name")
 	private String name;
     @Column(name = "cost")
-	private int cost;
+	private double cost;
     @Column(name = "category")
 	private String category;
     
-    public Game(){};
+    public Game(){}
+
     
-	public Game(String name, int cost, String category) {
+    
+	public Game(String name, double cost, String category) {
 		super();
 		this.name = name;
 		this.cost = cost;
 		this.category = category;
 	}
+
+
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCost() {
+
+	public double getCost() {
 		return cost;
 	}
-	public void setCost(int cost) {
+
+	public void setCost(double cost) {
 		this.cost = cost;
 	}
+
 	public String getCategory() {
 		return category;
 	}
+
 	public void setCategory(String category) {
 		this.category = category;
-	}
+	};
     
+
     
 	
 	

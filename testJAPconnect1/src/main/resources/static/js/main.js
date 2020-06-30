@@ -6,7 +6,6 @@ $(document).ready(function () {
 
     $("#add-form").submit(function (event) {
 
-	
         //stop submit the form, we will post it manually.
         event.preventDefault();
 
@@ -20,7 +19,6 @@ function fire_ajax_submit() {
 
     var search = {}
     search["name"] = $("#name").val();
-	 
 	search["cost"] = $("#cost").val();
 	search["category"] = $("#category").val();
 	
@@ -35,14 +33,25 @@ function fire_ajax_submit() {
     //    cache: false,
         timeout: 100000,
         success: function (data) {
-
         //    var json = "<h4>Ajax Response</h4>&lt;pre&gt;"
         //        + JSON.stringify(data, null, 4) + "&lt;/pre&gt;";
        //     $('#feedback').html(json);
-
+			if (data["msg"] == 'error')
+				 alert("MUST ENTER ALL FIELDS");
+			else if (data["msg"] == 'OK')
+			{
+				alert("GOOD");
+				$("#name").val("");
+	 			$("#cost").val("");
+				$("#category").val("");
+				
+			}
+			else if (data["msg"] == 'CATEGO_ERR')
+				alert("CATEGO_ERR");
+				
             console.log("SUCCESS : ", data);
-			alert("SUCCESS : "+ data);
-            $("#addgame").prop("disabled", false);
+			//alert("SUCCESS : "+ data);
+         //   $("#addgame").prop("disabled", false);
 
         },
         error: function (e) {
@@ -52,7 +61,7 @@ function fire_ajax_submit() {
           // $('#feedback').html(json);
 
             console.log("ERROR : ", e);
- 			alert("ERROR : "+ e);
+ 			alert("ERROR : "+e);
             $("#addgame").prop("disabled", false);
 
         },

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.app.model.Game;
+import com.spring.app.response.AjaxResponseBody;
 import com.spring.app.service.GameService;
 
 /**
@@ -26,21 +27,57 @@ public class ControllerRest {
 	   
     @PostMapping("/addGame")
 	@ResponseBody
-	public /*AjaxResponseBody*/ void insertMethod(@RequestBody Map<?, ?> params) {
+	public AjaxResponseBody  insertMethod(@RequestBody Map<?, ?> params) {
 		
-	//	AjaxResponseBody result = new AjaxResponseBody();
-	//	 UsuarioDAO dao = new UsuarioDAO();
-    	
-    	String name = (String) params.get("name");
-    	String cost = (String) params.get("cost");
-    	String catego =(String) params.get("category");
-		System.out.println("param NAME: "+name);
-		System.out.println("param COST :"+ cost);
-		System.out.println("param CATEGORY :"+catego);
-		
-		Game game= new Game(name,Integer.parseInt(cost) ,catego);
-		
-		gameService.save(game);
+		AjaxResponseBody result = new AjaxResponseBody();
+    	double cost =0;
+		System.out.println("param NAME === : "+params.get("name"));
+		System.out.println("param COST ==== :"+  params.get("cost"));
+		System.out.println("param CATEGORY == :"+params.get("category"));
+		String cos ="";
+		if(!"".equals( params.get("cost"))  )
+		{
+			 cos = (String) params.get("cost");
+			 if((cos.matches("\\d*\\.?\\d+") || cos.matches("[0-9]+")) && cos.length() > 2)
+			 {
+				 cost = Double.parseDouble(cos);
+			 }
+
+		}
+
+			
+		if (params.get("name")!= null && cost!=0 && params.get("category")!=null )
+		{
+			String catego =(String) params.get("category");
+		 
+			if(  catego.matches("[0-9]+")  || "".equals(catego)  ) 
+			{
+				
+				catego="N/A";
+				result.setMsg("CATEGO_ERR");
+			}
+			else
+			{
+				System.out.println("Inserting...");
+		    	String name = (String) params.get("name");    	
+				System.out.println("param NAME: "+name);
+				System.out.println("param COST :"+ cost);
+				System.out.println("param CATEGORY :"+catego);
+								
+				Game game= new Game(name,cost ,catego);
+				
+				gameService.save(game);
+				result.setMsg("OK");
+								
+			}
+			
+		}
+		else
+		{
+			System.out.println("\n ERROR, not inserted");
+			result.setMsg("error");
+		}
+
 		
 		//boolean exists = dao.isUserExists(params.get("user").toString(), params.get("pass").toString());
 		//System.out.println(exists);
@@ -59,7 +96,7 @@ public class ControllerRest {
 		
 		
 		
-	//	return result;
+	return result;
 		
 	}
 }

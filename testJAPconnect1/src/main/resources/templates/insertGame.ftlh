@@ -35,10 +35,12 @@
 		  <input type="text" class="form-control" id="category">
 		</div> 
 		
+		<a href="/" type="button" class="btn btn-primary">Back</a>
 		<button type="submit" id"addgame" class="btn btn-primary">Add</button>
+		
 		</form>
 	</div>
-		<a href="/" type="button" class="btn btn-primary">Back</a>
+		
  		
     </body>
 </html>

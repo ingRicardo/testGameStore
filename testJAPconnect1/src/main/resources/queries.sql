@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS game;
 CREATE TABLE public."game" (
 	id SERIAL NOT NULL,
 	"name" varchar NULL,
-	"cost" integer NULL,
+	"cost" decimal NULL,
 	"category" varchar NULL,
 	CONSTRAINT game_pk PRIMARY KEY (id)
 ); 
