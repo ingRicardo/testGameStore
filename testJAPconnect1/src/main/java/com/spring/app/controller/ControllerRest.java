@@ -4,12 +4,8 @@
 package com.spring.app.controller;
 
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,7 +44,6 @@ public class ControllerRest {
 			 }
 
 		}
-
 			
 		if (params.get("name")!= null && cost!=0 && params.get("category")!=null )
 		{
@@ -81,32 +76,9 @@ public class ControllerRest {
 			System.out.println("\n ERROR, not inserted");
 			result.setMsg("error");
 		}
-
-		
-		//boolean exists = dao.isUserExists(params.get("user").toString(), params.get("pass").toString());
-		//System.out.println(exists);
-		
-	/*	if (exists) {
-			result.setMsg("exists");
-			id = dao.getUserId(params.get("user").toString(), params.get("pass").toString());
-			System.out.println("id ->>> "+ id);
-		}else
-			result.setMsg("error");
-	*/
-			//result.setError("");
-			//result.setObj(params);
-			//result.setMsg("OK");
-			//result.setStatus("completed");
-		
-		
-		
+	
 	return result;
 		
 	}
-    
-    	
-    	
-    	
-    
     
 }

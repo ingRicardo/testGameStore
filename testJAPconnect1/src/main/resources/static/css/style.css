@@ -1,23 +1,16 @@
-h2 {color: blue}
-
-body {
-  background-color: #e6ecff;
+h1, h2 {
+    color:#0080ff;
 }
-
-td:nth-child(3) {
-    text-align: right;
+a {
+    color: #0000ff;
 }
-
-#nbar {
-  background-color:  #0099cc;
+table {
+    border-collapse: collapse;
 }
-
-.use-test
-{
-	 background-color: #0099cc;
-	 height: 15px;
+table th, table td {
+    padding: 5px;
 }
-.nr
-{
-	background-color: #e6ecff;
+.error {
+    color: red;
+    font-weight: bold;
 }

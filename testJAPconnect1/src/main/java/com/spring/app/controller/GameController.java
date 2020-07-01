@@ -48,7 +48,6 @@ public class GameController {
 	   // long count = gameService.count();
 	    model.addAttribute("gamesTu", games);
 
-
 	    return "game-list";
 
 	}
@@ -59,164 +58,89 @@ public class GameController {
 	    Optional<Game>  game = gameService.findById(gameId);
 	    System.out.println("getGameById ==== >" + game.get().getId());
 		if (game.isPresent()){
-
 	        model.addAttribute("allowDelete", false);
-
 	    } else {
-
 	        model.addAttribute("errorMessage", "ERROR");
-
 	    }
-
 	    model.addAttribute("gameTu", game);        
-
 	    return "gameTu";
-
 	}
 	
 	@GetMapping(value = {"/gamesTu/add"})
-
 	public String showAddGame(Model model) {
-
 	    Optional<Game> 	game = Optional.ofNullable(new Game());
-
 	    model.addAttribute("add", true);
-
 	    model.addAttribute("gameTu", game);
-
-	
 	    return "gameTu-edit";
-
 	}
-	
 	
 	@PostMapping(value = "/gamesTu/add")
-	public String addGame(Model model,
-
-	        @ModelAttribute("game") Game game) {        
+	public String addGame(Model model, @ModelAttribute("game") Game game) {        
 	    try {
-
 	       Game newGame = gameService.save(game);
-
 	        return "redirect:/gamesTu/" + String.valueOf(newGame.getId());
-
 	    } catch (Exception ex) {
-
 	        // log exception first, 
-
 	        // then show error
-
 	        //String errorMessage = ex.getMessage();            
-
 	        model.addAttribute("errorMessage", "ERROR");
-	
 	        model.addAttribute("add", true);
-
 	        return "gameTu-edit";
-
 	    }        
-
 	}
 	
-	
 	@GetMapping(value = {"/gamesTu/{gameId}/edit"})
-
 	public String showEditGame(Model model, @PathVariable Integer gameId) {
-
 	    Optional<Game> 	game = gameService.findById(gameId);
-
 	    if (!game.isPresent())
 	    {
-
 	        model.addAttribute("errorMessage","ERROR");
-
 	    }
-
 	    model.addAttribute("add", false);
-
 	    model.addAttribute("gameTu", game);
-
 	    return "gameTu-edit";
-
 	}
 	
 	@PostMapping(value = {"/gamesTu/{gameId}/edit"})
-	public String updateNote(Model model,
-
-	        @PathVariable Integer gameId,
-
-	        @ModelAttribute("gameTu") Game game) {
-
+	public String updateNote(Model model, @PathVariable Integer gameId, @ModelAttribute("gameTu") Game game) {
 	    try {
-
 	        game.setId(gameId);
-
 	        gameService.save(game);
-
 	        return "redirect:/gamesTu/" + String.valueOf(game.getId());
-
 	    } catch (Exception ex) {
-
 	        // log exception first, 
-
 	        // then show error
-
 	        String errorMessage = ex.getMessage();            
-
 	  //      logger.error(errorMessage);
-
 	        model.addAttribute("errorMessage", errorMessage);
-
-	 
-
 	        model.addAttribute("add", false);
-
 	        return "gameTu-edit";
-
 	    }
 	}
 	
 	@GetMapping(value = {"/gamesTu/{gameId}/delete"})
-	public String showDeleteGameById(
-
-	    Model model, @PathVariable Integer gameId) {
+	public String showDeleteGameById( Model model, @PathVariable Integer gameId) {
 	    Optional<Game> game = gameService.findById(gameId);
-
 	    if(!game.isPresent())
 	    {
 	        model.addAttribute("errorMessage", "ERROR");
 	    }
-
 	    model.addAttribute("allowDelete", true);
 	    model.addAttribute("gameTu", game);
-
 	    return "gameTu";
 
 	}
 	
 	@PostMapping(value = {"/gamesTu/{gameId}/delete"})
-
-	public String deleteGameeById(
-
-	        Model model, @PathVariable Integer gameId) {
-
+	public String deleteGameeById( Model model, @PathVariable Integer gameId) {
 	    try {
-
 	    	gameService.deleteById(gameId);
-
 	        return "redirect:/gamesTu";
-
 	    } catch (Exception ex) {
-
 	        String errorMessage = ex.getMessage();
-
 	   //     logger.error(errorMessage);
-
 	        model.addAttribute("errorMessage", errorMessage);
-
 	        return "gameTu";
-
 	    }
-
 	}
 }
