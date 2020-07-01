@@ -32,6 +32,17 @@ public class Game {
 
     
     
+    
+	public Game(int id, String name, double cost, String category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.cost = cost;
+		this.category = category;
+	}
+
+
+
 	public Game(String name, double cost, String category) {
 		super();
 		this.name = name;

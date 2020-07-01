@@ -69,7 +69,7 @@ public class MyController {
     		Optional<Game> game = gameService.findById(gameId);
     		if (game.isPresent()){
     		     
-    		    System.out.println(" game ID =====> "+game.get().getId());
+    		    System.out.println("GETMAPPPING game ID =====> "+game.get().getId());
     		   // processing with foo ...
     		}
     		else{
@@ -81,33 +81,38 @@ public class MyController {
 
     	   model.addAttribute("game", game);
     	
-				return "insertGame"; 
+		return "insertGame"; 
     }
     
     
     
 
     @PostMapping(value = {"/games/{gameId}/edit"})
-    public String updateNote(Model model, @PathVariable int gameId,
-            @ModelAttribute("game") Game game) {
+    public String updateGame(Model model, @PathVariable int gameId,
+            @ModelAttribute("game") Optional<Game> game) {
 
         try {
 
         	
-        	System.out.println("  id   : "+ gameId);
-            game.setId(gameId);
+        	System.out.println("postMapping -- name xxxxx -> "+ game.get().getName());
+        	
+        	game = gameService.findById(gameId);
+        	
+        	if (game.isPresent()){
+   		     
+    		    System.out.println("Found  game ID =====> "+game.get().getId());
+    		   // processing with foo ...
+    		    System.out.println("Found name ===>  "+ game.get().getName());
+    		    Game gam = new Game(game.get().getId(),game.get().getName(), game.get().getCost(), game.get().getCategory());
+    	        gameService.save(gam);
+    		}
+    		else{
+    		   // alternative processing....
+    		}
             //noteService.update(note);
-            game.setName(game.getName());
-            System.out.println("   name   : " + game.getName());
-            
             // need to find the record with the ID
-            
-            game.setCost(game.getCost());
-            game.setCategory(game.getCategory());
-            
-            gameService.save(game);
-
-            return "redirect:/games/"  ;
+          
+            return "redirect:/"  ;
 
         } catch (Exception ex) {
 

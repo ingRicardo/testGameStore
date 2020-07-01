@@ -35,22 +35,22 @@
 		
 	
 	    <div id="feedback"></div>
-	    <form action="${urlAction}" class="form-horizontal" id="add-form"  method="POST">
-		 <div class="form-group">
-		  <label for="name">Name:</label>
-		  <input type="text" class="form-control" id="name"  value="${(game.get().name)!''}"  >
-		</div>
-		<div class="form-group">
-		  <label for="cost">cost:</label>
-		  <input type="text" class="form-control" id="cost" value="${(game.get().cost)!''}">
-		</div> 
-		<div class="form-group">
-		  <label for="catego">category:</label>
-		  <input type="text" class="form-control" id="category" value="${(game.get().category)!''}">
-		</div> 
-		
-		<a href="/" type="button" class="btn btn-primary">Back</a>
-		<button type="submit" id"addgame" class="btn btn-primary">Add</button>
+	    <form action="${urlAction}" class="form-horizontal" name="game" id="add-form"  method="POST">
+			 <div class="form-group">
+			  <label for="name">Name:</label>
+			  <input type="text" class="form-control" id="name"  value="${(game.get().name)!''}"  >
+			</div>
+			<div class="form-group">
+			  <label for="cost">cost:</label>
+			  <input type="text" class="form-control" id="cost" value="${(game.get().cost)!''}">
+			</div> 
+			<div class="form-group">
+			  <label for="catego">category:</label>
+			  <input type="text" class="form-control" id="category" value="${(game.get().category)!''}">
+			</div> 
+			
+			<a href="/" type="button" class="btn btn-primary">Back</a>
+			<button type="submit" id"addgame" class="btn btn-primary" value="${submitTitle}" >Add</button>
 		
 		</form>
 	</div>

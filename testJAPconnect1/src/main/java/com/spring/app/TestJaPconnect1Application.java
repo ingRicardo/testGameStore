@@ -11,6 +11,6 @@ public class TestJaPconnect1Application {
 	}
 
 }
-
+//http://localhost:8083/gamesTu
 //https://mkyong.com/spring-boot/spring-boot-ajax-example/
 //https://www.dariawan.com/tutorials/spring/spring-boot-freemarker-crud-example/

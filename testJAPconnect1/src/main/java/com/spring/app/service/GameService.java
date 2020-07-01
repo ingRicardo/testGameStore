@@ -32,13 +32,13 @@ public class GameService implements GameRepository{
         return (List<Game>) gameRepository.findAll();
 
 	}
-
+/*
 	@Override
-	public Game save(Game entity) {
+	public   Game save(Game entity) {
 		// TODO Auto-generated method stub
 		return gameRepository.save(entity);
 	}
-
+*/
 	@Override
 	public <S extends Game> Iterable<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
@@ -73,7 +73,7 @@ public class GameService implements GameRepository{
 	@Override
 	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
-		
+		gameRepository.deleteById(id);
 	}
 
 	@Override
@@ -92,6 +92,12 @@ public class GameService implements GameRepository{
 	public void deleteAll() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public <S extends Game> S save(S Game) {
+		// TODO Auto-generated method stub
+		return gameRepository.save(Game);
+		//return null;
 	}
 
  
