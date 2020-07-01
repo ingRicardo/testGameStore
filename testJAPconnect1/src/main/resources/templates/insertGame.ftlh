@@ -16,23 +16,37 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+           <#if add>
+
+            <#assign urlAction>/insertGame</#assign>
+
+            <#assign submitTitle>Create</#assign>
+
+        <#else>
+
+            <#assign urlAction>${'/games/' + game.get().getId() + '/edit'}</#assign>
+
+            <#assign submitTitle>Update</#assign>
+
+        </#if>
+    <div class="container">	
         <h2>Add a game</h2>
 		<br>
 		
-	<div class="container">	
+	
 	    <div id="feedback"></div>
-	    <form class="form-horizontal" id="add-form">
+	    <form action="${urlAction}" class="form-horizontal" id="add-form"  method="POST">
 		 <div class="form-group">
 		  <label for="name">Name:</label>
-		  <input type="text" class="form-control" id="name">
+		  <input type="text" class="form-control" id="name"  value="${(game.get().name)!''}"  >
 		</div>
 		<div class="form-group">
 		  <label for="cost">cost:</label>
-		  <input type="text" class="form-control" id="cost">
+		  <input type="text" class="form-control" id="cost" value="${(game.get().cost)!''}">
 		</div> 
 		<div class="form-group">
 		  <label for="catego">category:</label>
-		  <input type="text" class="form-control" id="category">
+		  <input type="text" class="form-control" id="category" value="${(game.get().category)!''}">
 		</div> 
 		
 		<a href="/" type="button" class="btn btn-primary">Back</a>

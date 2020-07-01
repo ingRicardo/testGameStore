@@ -6,10 +6,14 @@ package com.spring.app.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,12 +54,77 @@ public class MyController {
     
     }
     @RequestMapping("/insertGame")
-    public String InsertGame()
+    public String InsertGame(Model model)
     {
        // AjaxResponseBody result = new AjaxResponseBody();
     	System.out.println("add");
+    	 model.addAttribute("add", true);
     	return "insertGame";
     	
     }
+    @GetMapping(value = {"/games/{gameId}/edit"})
+    public String showEditGame(Model model, @PathVariable int gameId) {
+    	
 
+    		Optional<Game> game = gameService.findById(gameId);
+    		if (game.isPresent()){
+    		     
+    		    System.out.println(" game ID =====> "+game.get().getId());
+    		   // processing with foo ...
+    		}
+    		else{
+    		   // alternative processing....
+    		}
+    		
+
+    	   model.addAttribute("add", false);
+
+    	   model.addAttribute("game", game);
+    	
+				return "insertGame"; 
+    }
+    
+    
+    
+
+    @PostMapping(value = {"/games/{gameId}/edit"})
+    public String updateNote(Model model, @PathVariable int gameId,
+            @ModelAttribute("game") Game game) {
+
+        try {
+
+        	
+        	System.out.println("  id   : "+ gameId);
+            game.setId(gameId);
+            //noteService.update(note);
+            game.setName(game.getName());
+            System.out.println("   name   : " + game.getName());
+            
+            // need to find the record with the ID
+            
+            game.setCost(game.getCost());
+            game.setCategory(game.getCategory());
+            
+            gameService.save(game);
+
+            return "redirect:/games/"  ;
+
+        } catch (Exception ex) {
+
+            // log exception first, 
+
+            // then show error
+
+            String errorMessage = ex.getMessage();            
+
+            model.addAttribute("errorMessage", errorMessage);
+
+            model.addAttribute("add", false);
+
+            return "insertGame";
+
+        }
+    }
+    
+    
 }

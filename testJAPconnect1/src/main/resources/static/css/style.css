@@ -1,5 +1,23 @@
 h2 {color: blue}
 
+body {
+  background-color: #e6ecff;
+}
+
 td:nth-child(3) {
     text-align: right;
+}
+
+#nbar {
+  background-color:  #0099cc;
+}
+
+.use-test
+{
+	 background-color: #0099cc;
+	 height: 15px;
+}
+.nr
+{
+	background-color: #e6ecff;
 }

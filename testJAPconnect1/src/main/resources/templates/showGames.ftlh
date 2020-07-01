@@ -13,16 +13,20 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" href="css/style.css">
+        
+         <script type="text/javascript" src="js/GamesTable.js"></script>
     </head>
     <body>
+    <div class="container">
         <h2>List of games</h2>
-
-        <table class="table table-striped" >
+		
+        <table class="table table-striped" id="thetable-test" >
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Cost</th>
                 <th>Category</th>
+                <th>Options</th>
             </tr>
 
             <#list games as game>
@@ -31,11 +35,13 @@
                     <td>${game.name}</td>
                     <td>${game.cost}</td>
                     <td>${game.category}</td>
+            		<td><a href="${'games/' +game.id + '/edit'}">Edit</a></td>
                 </tr>
             </#list>
         </table>
+        
         <br>
 		<a href="/" type="button" class="btn btn-primary">Back</a>
-		 
+	</div>
     </body>
 </html>

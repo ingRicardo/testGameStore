@@ -13,6 +13,6 @@ import com.spring.app.model.Game;
  *
  */
 @Repository
-public interface GameRepository  extends CrudRepository<Game, Long>{
+public interface GameRepository  extends    CrudRepository<Game, Integer>{
 
 }

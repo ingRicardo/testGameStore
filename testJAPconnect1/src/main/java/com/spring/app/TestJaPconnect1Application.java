@@ -13,3 +13,4 @@ public class TestJaPconnect1Application {
 }
 
 //https://mkyong.com/spring-boot/spring-boot-ajax-example/
+//https://www.dariawan.com/tutorials/spring/spring-boot-freemarker-crud-example/

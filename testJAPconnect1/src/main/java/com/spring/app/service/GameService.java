@@ -46,19 +46,20 @@ public class GameService implements GameRepository{
 	}
 
 	@Override
-	public Optional<Game> findById(Long id) {
+	public Optional<Game> findById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		 
+		return Optional.of(gameRepository.findById(id).orElse(null));
 	}
 
 	@Override
-	public boolean existsById(Long id) {
+	public boolean existsById(Integer id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Iterable<Game> findAllById(Iterable<Long> ids) {
+	public Iterable<Game> findAllById(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -70,7 +71,7 @@ public class GameService implements GameRepository{
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -92,6 +93,8 @@ public class GameService implements GameRepository{
 		// TODO Auto-generated method stub
 		
 	}
+
+ 
 
 
 
