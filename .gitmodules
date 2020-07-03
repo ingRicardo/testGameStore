@@ -1,0 +1,3 @@
+[submodule "testJAPconnect1/basic-frontend-app"]
+	path = testJAPconnect1/basic-frontend-app
+	url = https://github.com/ingRicardo/testGameStore/tree/master/testJAPconnect1/basic-frontend-app
